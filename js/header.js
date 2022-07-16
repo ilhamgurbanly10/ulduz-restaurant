@@ -1,17 +1,51 @@
 
+// getting-elements
+
+const modalBtn = document.querySelector('.modal-container-closer');
+
+// the-end-of-getting-elements
+
+
+
+// calling
+
+hideModal(modalBtn);
+
+hideNavbarSearchModal();
+
+flashNavbarAnimations();
+
+flashActiveScrolling();
+
+// the-end-of-calling-functions
+
+
+
 // modal-container
 
-hideModalCOntainer();
+function hideModal(btn) {
+	const tar = btn.getAttribute('target');
+	const modal = document.querySelector(''+tar+'');
+	const hide = () => modal.classList.remove('fl-show');
+	btn.addEventListener('click', hide);
+}
 
-function hideModalCOntainer() {
+// the-end-of-modal-container
 
-	const modal = document.querySelector('#userModalContainer');
-	const btn = document.querySelector('.user-modal-con-close-btn');
 
-	function hide() { modal.classList.remove('fl-show'); }
+
+// hide-navbar-search-modal
+
+function hideNavbarSearchModal() {
+
+	const btn = document.querySelector('.fl-navbar-search-toggler');
+	const navbar = document.querySelector('#navbarSearchModal');
+
+	function hide() { if (!btn.className.includes('fl-active')) navbar.classList.remove('fl-show'); }
 
 	btn.addEventListener('click', hide);
 
 }
 
-// the-end-of-modal-container
+// the-end-of-hide-navbar-search-modal
+

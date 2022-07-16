@@ -7,18 +7,20 @@ function flashGallery(el, settings = {
 	dots: true,
 	listIndexes: true,
 	infinite: false,
-	arrows: true
+	arrows: true,
+	lengthPerList: 9
 }) {
 
 	// default-values
-	if (settings.autoplay == undefined) settings.autoplay = false;
-	if (settings.autoplaySpeed == undefined) settings.autoplaySpeed = "normal";
-	if (settings.modalPlaySpeed == undefined) settings.modalPlaySpeed = "fast";
-	if (settings.speed == undefined) settings.speed = "normal";
-	if (settings.dots == undefined) settings.dots = true;
-	if (settings.listIndexes == undefined) settings.listIndexes = true;
-	if (settings.infinite == undefined) settings.infinite = false;
-	if (settings.arrows == undefined) settings.arrows = true;
+	if (!settings.autoplay) settings.autoplay = false;
+	if (!settings.autoplaySpeed) settings.autoplaySpeed = "normal";
+	if (!settings.modalPlaySpeed) settings.modalPlaySpeed = "fast";
+	if (!settings.speed) settings.speed = "normal";
+	if (!settings.dots) settings.dots = true;
+	if (!settings.listIndexes) settings.listIndexes = true;
+	if (!settings.infinite) settings.infinite = false;
+	if (!settings.arrows) settings.arrows = true;
+	if (!settings.lengthPerList) settings.lengthPerList = 9;
 
 	// elements-and-values
 	el = flashSelector(el);
@@ -26,7 +28,7 @@ function flashGallery(el, settings = {
 	const galleryList = el.querySelector('.fl-gallery-list');
 	const images = el.querySelectorAll('.fl-gallery-item');
 	var otherImages = [];
-	const lengthInList = 9;
+	const lengthInList = Number(settings.lengthPerList);
 	const otherImagesLength = images.length - lengthInList;
 	const otherImagesListLength = otherImagesLength / lengthInList;
 	const imagesLength = el.querySelector('.fl-gallery-images-length');
@@ -723,7 +725,7 @@ function flashGalleryModalContainer(el, speed, playSpeed, infinite) {
 
 		if(isPlaying) {
 			pause();
-			setTimeout( function() { play(); }, 1);
+			setTimeout( function() { play(); }, 100);
 		}	
 
 	}
@@ -829,7 +831,7 @@ function flashGalleryModalContainer(el, speed, playSpeed, infinite) {
 
 		if(isPlaying) {
 			pause();
-			setTimeout( function() { play(); }, 1);
+			setTimeout( function() { play(); }, 100);
 		}	
 
 	}
@@ -857,7 +859,7 @@ function flashGalleryModalContainer(el, speed, playSpeed, infinite) {
 
 		if(isPlaying) {
 			pause();
-			setTimeout( function() { play(); }, 1);
+			setTimeout( function() { play(); }, 100);
 			
 		}	
 	}
